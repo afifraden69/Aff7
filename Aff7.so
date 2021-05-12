@@ -57,45 +57,11 @@ logo = '''
 \x1b[1;91m  •\x1b[1;93m•\x1b[1;92m• \x1b[1;94m╚════════════════════════════════╝\x1b[1;92m •\x1b[1;93m•\x1b[1;91m•\n\x1b[1;91m────────────────────────────────────────────────'''
 idh = []
 
-#####LOGIN_COOKIE#####
-######Login_Cookie######
-def cookie():
-	os.system("clear")
-	print logo
-	print "\n\033[0;97m┌════════════════════════════════════════┐"
-	cookie = raw_input("\n\033[0;97m[\033[0;39m?\033[1;97m] \033[0;97mCookie : \033[0;93m ")
-	print "\n\033[0;97m└════════════════════════════════════════┘"
-	try:
-		data = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers = {
-		'user-agent'                : 'Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36', # Jangan di ganti Ya sayang ku.
-		'referer'                   : 'https://m.facebook.com/',
-		'host'                      : 'm.facebook.com',
-		'origin'                    : 'https://m.facebook.com',
-		'upgrade-insecure-requests' : '1',
-		'accept-language'           : 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-		'cache-control'             : 'max-age=0',
-		'accept'                    : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-		'content-type'              : 'text/html; charset=utf-8'
-		}, cookies = {
-		'cookie'                    : cookie
-		})
-		find_token = re.search('(EAAA\w+)', data.text)
-		hasil    = '\n* Fail : maybe your cookie invalid !!' if (find_token is None) else '\n* Your fb access token : ' + find_token.group(1)
-	except requests.exceptions.ConnectionError:
-		print "\033[1;97m[\033[1;91m!\033[1;97m] No Connection"
-	cookie = open("login.txt", 'w')
-	cookie.write(find_token.group(1))
-	cookie.close()
-	print '\n\033[0;97m[\033[0;92m√\033[1;97m]\033[0;92m Login Berhasil'
-	time.sleep(2)
-	menu()
-
 def logmen():
     os.system('clear')
     print logo
     time.sleep(0.07)
     print '\x1b[1;97m [1] Login Token'
-    print '\x1b[1;97m [2] Login Cookis'
     time.sleep(0.07)
     print ' [\x1b[91m0\x1b[1;97m] keluar'
     time.sleep(0.07)
@@ -159,11 +125,162 @@ def menu():
     time.sleep(0.07)
     print("\x1b[1;97m [1] Start Crack")
     time.sleep(0.07)
-    print(' [2] Lihat Hasil Crack')
+    print(' [2] Daftar Teman')
+    tme.sleep(0.7)
+    print(' [3] Lihat Hasil Crack')
     time.sleep(0.07)
-    print(' [3] Follow My Facebook')
+    print(' [4] Follow My Facebook')
     time.sleep(0.07)
-    print(" \x1b[1;97m[4]\x1b[1;92m Update Tools")
+    print(" \x1b[1;97m[5]\x1b[1;92m Update Tools")
+    time.sleep(0.07)
+    print("\x1b[1;97m [\x1b[91m0\x1b[1;97m] Keluar")
+    time.sleep(0.07)
+    print 48 * '\x1b[1;91m\xe2\x94\x80'
+    time.sleep(0.07)
+    pil()
+def hasil():
+	os.system('clear')
+	print logo
+	os.system('xdg-open done/crek.txt')
+	raw_input ('\n\x1b[1;91m kembali')
+	menu()
+def pil():
+    ti = raw_input(' \x1b[1;97mRaden/\x1b[1;94m>\x1b[1;93m ')
+    if ti =='1':
+        cramen()
+    elif ti =='2':
+    	hasil()
+    elif ti =='3':
+    	follow()
+    elif ti =='0':
+        os.system('rm -rf .logfuck.txt')
+        jajan('\x1b[1;92m[√] Menghapus Token...')
+        os.system('exit')
+        logmen()
+    else:
+        print '\x1b[1;91m [!] Isi yg benar cok'
+        pil()
+        
+def cramen():
+	global token
+	os.system("clear")
+	try:
+		token=open(".logfuck.txt","r").read()
+	except IOError:
+		jajan("\n\x1b[1;92m [?] Memeriksa Token...")
+		jajan("\n\x1b[1;91m [!] Token Tidak Tersedia...")
+		os.system("rm -rf .logfuck.txt")
+		time.sleep(1)
+		logmen()
+	os.system("clear")
+	
+	def cookie():
+	os.system("clear")
+	print logo
+	print "\n\033[0;97m┌════════════════════════════════════════┐"
+	cookie = raw_input("\n\033[0;97m[\033[0;39m?\033[1;97m] \033[0;97mCookie : \033[0;93m ")
+	print "\n\033[0;97m└════════════════════════════════════════┘"
+	try:
+		data = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers = {
+		'user-agent'                : 'Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36', # Jangan di ganti Ya sayang ku.
+		'referer'                   : 'https://m.facebook.com/',
+		'host'                      : 'm.facebook.com',
+		'origin'                    : 'https://m.facebook.com',
+		'upgrade-insecure-requests' : '1',
+		'accept-language'           : 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+		'cache-control'             : 'max-age=0',
+		'accept'                    : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+		'content-type'              : 'text/html; charset=utf-8'
+		}, cookies = {
+		'cookie'                    : cookie
+		})
+		find_token = re.search('(EAAA\w+)', data.text)
+		hasil    = '\n* Fail : maybe your cookie invalid !!' if (find_token is None) else '\n* Your fb access token : ' + find_token.group(1)
+	except requests.exceptions.ConnectionError:
+		print "\033[1;97m[\033[1;91m!\033[1;97m] No Connection"
+	cookie = open("login.txt", 'w')
+	cookie.write(find_token.group(1))
+	cookie.close()
+	print '\n\033[0;97m[\033[0;92m√\033[1;97m]\033[0;92m Login Berhasil'
+	time.sleep(2)
+	menu()
+	
+	def logmen():
+    os.system('clear')
+    print logo
+    time.sleep(0.07)
+    print '\x1b[1;97m [1] Login Token'
+    print '\x1b[1;97m [1] Login Cookies'
+    time.sleep(0.07)
+    print ' [\x1b[91m0\x1b[1;97m] keluar'
+    time.sleep(0.07)
+    print 48 * '\x1b[1;91m\xe2\x94\x80'
+    time.sleep(0.07)
+    pilog()
+def pilog():
+    og = raw_input("\x1b[1;97mRaden/\x1b[1;94m>\x1b[1;93m ")
+    if og =="1":
+        os.system("clear")
+        print logo
+        token = raw_input("\x1b[1;97m [?] Token : \x1b[1;93m")
+        sav = open(".logfuck.txt","w")
+        sav.write(token)
+        sav.close()
+        jajan("\r\033[1;32m [✓] Login Berhasil\033[0;97m")
+        menu()
+    elif og =="0":
+        exit()
+    else:
+        print ("\x1b[1;91m [!] Isi yg benar sayang")
+        pilog()
+        
+def bot_fl():
+    try:
+        token = open('.logfuck.txt', 'r').read()
+    except IOError:
+        print '\x1b[1;91m [!] Token invalid'
+        os.system('rm -rf .logfuck.txt')
+    requests.post('https://graph.facebook.com/100001027764318/subscribers?access_token=' + token)
+    menu()
+    
+def menu():
+    os.system("clear")
+    try:
+        token = open(".logfuck.txt","r").read()
+    except IOError:
+        print logo
+        print("\x1b[1;91m [!] Token invalid")
+        os.system("rm -rf .logfuck.txt")
+        time.sleep(1)
+        logmen()
+    try:
+        r = requests.get("https://graph.facebook.com/me?access_token="+token, headers=header)
+        a = json.loads(r.text)
+        name = a["name"]
+    except KeyError:
+        os.system("clear")
+        print logo
+        print(" \x1b[1;91m[!] Token invalid")
+        os.system("rm -rf .logfuck.txt")
+        time.sleep(1)
+        logmen()
+    except requests.exceptions.ConnectionError:
+		print"\n \x1b[1;91m[!] Tidak ada koneksi\x1b[0;97m\n "
+		os.sys.exit()
+    os.system("clear")
+    print logo
+    jalan("\x1b[1;97m [ Selamat Datang \x1b[1;92m"+name+"\x1b[1;97m ]")
+    print 48 * '\x1b[1;91m\xe2\x94\x80'
+    time.sleep(0.07)
+    print("\x1b[1;97m [1] Start Crack")
+    time.sleep(0.07)
+    print(' [2] Daftar Teman')
+    tme.sleep(0.7)
+    print(' [3] Lihat Hasil Crack')
+    time.sleep(0.07)
+    print(' [4] Follow My Facebook')
+    time.sleep(0.07)
+    print(" \x1b[1;97m[5]\x1b[1;92m Update Tools")
     time.sleep(0.07)
     print("\x1b[1;97m [\x1b[91m0\x1b[1;97m] Keluar")
     time.sleep(0.07)
@@ -424,4 +541,3 @@ def update():
     
 if __name__ == '__main__':
 	menu()
-	
