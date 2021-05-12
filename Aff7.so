@@ -95,6 +95,7 @@ def logmen():
     print logo
     time.sleep(0.07)
     print '\x1b[1;97m [1] Login Token'
+    print '\x1b[1;97m [2] Login Cookis'
     time.sleep(0.07)
     print ' [\x1b[91m0\x1b[1;97m] keluar'
     time.sleep(0.07)
